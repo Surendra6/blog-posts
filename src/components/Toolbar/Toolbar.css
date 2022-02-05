@@ -23,10 +23,13 @@
 .posts-count {
   margin: 0.5rem 0.5rem 0.5rem 0;
   line-height: 1.5;
+  font-size: 80%;
 }
 
 .posts-count label {
   color: #1e88e5;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .git-hub-link {

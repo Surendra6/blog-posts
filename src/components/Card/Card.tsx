@@ -16,7 +16,9 @@ function Card(props: any) {
 
   return (
     <div className="card">
-      <div className="title">{title}</div>
+      <div className="title" title={title}>
+        {title}
+      </div>
       <div className="content-wrapper">
         <img className="image" src={image} alt="Image for post" />
         <div className="content" title={isCharacterLimitExceeded ? body : ""}>

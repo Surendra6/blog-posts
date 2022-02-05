@@ -48,8 +48,8 @@ function App() {
   function filteredPosts(value: String) {
     return posts.filter(
       (item: { id: String; title: String; body: String }) =>
-        item.title.toLowerCase().includes(value.toLowerCase()) ||
-        item.body.toLowerCase().includes(value.toLowerCase())
+        item.title.toLowerCase().includes(value.toLowerCase().trim()) ||
+        item.body.toLowerCase().includes(value.toLowerCase().trim())
     );
   }
 

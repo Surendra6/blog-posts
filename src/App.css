@@ -11,7 +11,7 @@ body {
 
 .cards {
   margin: 0 auto;
-  padding: 0 0.5rem 1rem;
+  padding: 0 1rem 1rem;
   max-width: 1200px;
   margin-top: 2rem;
   display: grid;

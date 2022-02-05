@@ -18,11 +18,9 @@ function Card(props: any) {
     <div className="card">
       <div className="title">{title}</div>
       <div className="content-wrapper">
+        <img className="image" src={image} alt="Image for post" />
         <div className="content" title={isCharacterLimitExceeded ? body : ""}>
           {formatBody()}
-        </div>
-        <div>
-          <img className="image" src={image} alt="Image for post" />
         </div>
       </div>
     </div>

@@ -1,0 +1,51 @@
+.toolbar {
+  top: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0.5rem 3.5rem;
+  position: sticky;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 3px;
+}
+
+.search-input {
+  width: 300px;
+  height: 30px;
+  font-size: 0.75rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0 0.5rem;
+}
+
+.posts-count {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  line-height: 1.5;
+}
+
+.posts-count label {
+  color: #1e88e5;
+}
+
+.git-hub-link {
+  width: 100px;
+  height: 32px;
+  margin: 0.5rem 0;
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 2;
+  text-decoration: none;
+}
+
+.git-hub-link:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 3px;
+}

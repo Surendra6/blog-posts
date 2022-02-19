@@ -20,13 +20,13 @@ function App() {
   }, [dispatch]);
 
   blogList = filteredPosts(searchValue).map(
-    (item: { id: String; title: String; body: String }) => {
+    (item: { id: String; title: String; body: String }, index: any) => {     
       return (
         <Card
           key={item.id}
           title={item.title}
           body={item.body}
-          image="https://picsum.photos/200"
+          image={`https://picsum.photos/200?+${index}`}
         ></Card>
       );
     }

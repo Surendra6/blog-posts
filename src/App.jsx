@@ -8,6 +8,8 @@ import { PostsContextProvider } from "./hooks/context/PostsContext";
 import UsersList from "./pages/UserList";
 import Header from "./components/Header";
 import Post from "./pages/Post";
+import WorkInProgress from "./pages/WorkInProgress";
+import ErrorPage from "./pages/ErrorPage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,14 @@ function App() {
                 <div className="max-w-3xl w-full min-h-screen px-5 py-10 mt-12 flex flex-col">
                   <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route
+                      path="/blog-posts/todos"
+                      element={<WorkInProgress />}
+                    />
+                    <Route
+                      path="/blog-posts/albums"
+                      element={<WorkInProgress />}
+                    />
                     <Route path="/blog-posts/users" element={<UsersList />} />
                     <Route
                       path="/blog-posts/users/:id"
@@ -30,6 +40,7 @@ function App() {
                     />
                     <Route path="/blog-posts/post/:id" element={<Post />} />
                     <Route path="/blog-posts" element={<Home />} />
+                    <Route path="*" element={<ErrorPage />} />
                   </Routes>
                 </div>
                 <button className="fixed bottom-10 right-10">Git hub</button>

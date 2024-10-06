@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   const handleSelectSuggestion = ({ searchType, id }) => {
-    navigate(`/${searchType}/${id}`);
+    navigate(`/blog-posts/${searchType}/${id}`);
   };
 
   return (
@@ -67,25 +67,25 @@ const Header = () => {
           <NavLink
             label="Home"
             icon={<AiFillHome className="size-6 md:size-5" />}
-            route="/"
+            route="/blog-posts"
             currentPath={pathname}
           />
           <NavLink
             label="Users"
             icon={<PiUsersFill className="size-6 md:size-5" />}
-            route="/users"
+            route="/blog-posts/users"
             currentPath={pathname}
           />
           <NavLink
             label="Todos"
             icon={<LuListTodo className="size-6 md:size-5" />}
-            route="/todos"
+            route="/blog-posts/todos"
             currentPath={pathname}
           />
           <NavLink
             label="Albums"
             icon={<MdPhotoLibrary className="size-6 md:size-5" />}
-            route="/albums"
+            route="/blog-posts/albums"
             currentPath={pathname}
           />
         </nav>

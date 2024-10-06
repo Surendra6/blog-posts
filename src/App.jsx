@@ -23,10 +23,13 @@ function App() {
                 <div className="max-w-3xl w-full min-h-screen px-5 py-10 mt-12 flex flex-col">
                   <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/users" element={<UsersList />} />
-                    <Route path="/users/:id" element={<UserDetails />} />
-                    <Route path="/post/:id" element={<Post />} />
-                    <Route path="/" element={<Home />} />
+                    <Route path="/blog-posts/users" element={<UsersList />} />
+                    <Route
+                      path="/blog-posts/users/:id"
+                      element={<UserDetails />}
+                    />
+                    <Route path="/blog-posts/post/:id" element={<Post />} />
+                    <Route path="/blog-posts" element={<Home />} />
                   </Routes>
                 </div>
                 <button className="fixed bottom-10 right-10">Git hub</button>

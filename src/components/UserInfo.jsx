@@ -16,14 +16,14 @@ const UserInfo = ({ userId }) => {
   return (
     <div className="flex flex-row gap-2 items-center">
       <Link
-        to={`/users/${userId}`}
+        to={`/blog-posts/users/${userId}`}
         className="text-black font-bold text-sm hover:underline"
       >
         <Avatar name={userDetails.name} size={16} />
       </Link>
       <div className="flex flex-col">
         <Link
-          to={`/users/${userId}`}
+          to={`/blog-posts/users/${userId}`}
           className="text-black text-sm hover:underline"
         >
           {userDetails.name}

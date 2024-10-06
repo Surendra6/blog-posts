@@ -48,9 +48,9 @@ function App() {
                   href="https://github.com/Surendra6/blog-posts"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="fixed bottom-10 right-10 animate-pulse duration-100 flex bg-white hover:bg-gray-100 text-black font-bold size-16 py-2 px-4 rounded-full shadow-xl items-center justify-center"
+                  className="fixed bottom-10 right-10 animate-pulse duration-100 flex bg-white border hover:bg-gray-100 text-black font-bold size-16 py-2 px-4 rounded-full shadow-xl items-center justify-center"
                 >
-                  <FaGithub size={24} />
+                  <FaGithub size={30} />
                 </a>
               </div>
             </div>

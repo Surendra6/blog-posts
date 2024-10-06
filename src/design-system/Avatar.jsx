@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Avatar = ({ name, src, size = "10" }) => {
+const Avatar = ({ name, src, styledClasses }) => {
   const [imageError, setImageError] = useState(false);
 
   // Function to get the initials from the name
@@ -12,7 +12,7 @@ const Avatar = ({ name, src, size = "10" }) => {
 
   return (
     <div
-      className={`flex items-center justify-center bg-blue-500 text-white rounded-full text-lg font-bold size-${size} object-cover`}
+      className={`flex items-center justify-center bg-blue-500 text-white rounded-full text-lg font-bold size-10 object-cover ${styledClasses}`}
     >
       {src && !imageError ? (
         <img

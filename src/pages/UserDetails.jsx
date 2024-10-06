@@ -26,7 +26,7 @@ const UserDetails = () => {
       </h2>
       <section className="flex flex-row justify-between items-start border-b py-5">
         <div>
-          <Avatar name={user?.name} size={12} />
+          <Avatar name={user?.name} styledClasses="size-24" />
           <div className="mt-2">{user?.name}</div>
         </div>
 

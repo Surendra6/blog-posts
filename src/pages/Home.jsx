@@ -36,7 +36,7 @@ const Home = () => {
       ))}
       <button
         onClick={handleLoadMore}
-        className="w-32 flex items-center justify-center rounded-full text-blue-500 border-blue-500 hover:border-blue-500 focus:border-blue-500 active:border-blue-500"
+        className="w-32 flex items-center justify-center rounded-full text-blue-500 border-blue-500 hover:border-blue-500 focus:border-blue-500 active:border-blue-500 hover:outline-none focus:outline-none"
       >
         {isLoadMore ? (
           <div className="w-5 h-5 border-4 border-dotted rounded-full animate-spin border-blue-500"></div>

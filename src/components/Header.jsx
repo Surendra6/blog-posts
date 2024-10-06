@@ -1,13 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { LuListTodo } from "react-icons/lu";
 import { PiUsersFill } from "react-icons/pi";
 import { MdPhotoLibrary } from "react-icons/md";
 import SearchAutocomplete from "./SearchAutocomplete.jsx";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UsersContext from "../hooks/context/UsersContext";
 import PostsContext from "../hooks/context/PostsContext";
 import { useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 const NavLink = ({ label, icon, route, currentPath }) => {
   return (
@@ -28,6 +29,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const { users } = useContext(UsersContext);
   const { posts } = useContext(PostsContext);
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
   // Handle search logic passed as prop
   const handleSearch = (searchValue, setFilteredSuggestions) => {
@@ -55,13 +57,37 @@ const Header = () => {
     navigate(`/blog-posts/${searchType}/${id}`);
   };
 
+  const handleOnSearchToggle = () => {
+    setShowSearchInput((prevState) => !prevState);
+  };
+
   return (
     <header className="bg-white text-gray-400 shadow-md fixed top-0 left-0 w-full z-10">
-      <div className="max-w-3xl container mx-auto flex flex-col justify-between px-5 items-center md:flex-row">
-        <SearchAutocomplete
-          handleSearch={handleSearch}
-          handleSelectSuggestion={handleSelectSuggestion}
-        />
+      <div className="max-w-3xl container mx-auto flex justify-between px-5 items-center md:flex-row">
+        <div className="relative w-full md:w-1/2">
+          <SearchAutocomplete
+            handleSearch={handleSearch}
+            handleSelectSuggestion={handleSelectSuggestion}
+          />
+        </div>
+
+        {/* <div className="w-full inline-flex md:hidden">
+          {!showSearchInput && (
+            <button
+              className="bg-transparent p-0 text-gray-500 hover:text-gray-600 cursor-pointer border-0 hover:outline-none focus:outline-none"
+              onClick={handleOnSearchToggle}
+            >
+              <FaSearch className="size-6 md:size-5" />
+            </button>
+          )}
+
+          {showSearchInput && (
+            <SearchAutocomplete
+              handleSearch={handleSearch}
+              handleSelectSuggestion={handleSelectSuggestion}
+            />
+          )}
+        </div> */}
 
         <nav className="flex items-center gap-2">
           <NavLink

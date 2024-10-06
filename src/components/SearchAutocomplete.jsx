@@ -71,7 +71,7 @@ const SearchAutocomplete = ({ handleSearch, handleSelectSuggestion }) => {
   }, [activeSuggestionIndex, filteredSuggestions.length]);
 
   return (
-    <div className="relative w-full md:w-1/2">
+    <div className="relative w-full">
       <div className="flex flex-row items-center bg-gray-200 rounded-md ">
         <AiOutlineSearch className="w-12 text-gray-500 text-xl" />
         <input

@@ -16,7 +16,7 @@ const PostCard = ({ postId, userId, title, body }) => {
       <p className="mt-4 text-base ">{body}</p>
       <div className="mt-5 pt-5 border-t text-right">
         <button
-          className="inline-flex items-center bg-transparent p-0 text-sm text-gray-600 hover:text-blue-400 hover:underline border-0 hover:outline-none focus:outline-none"
+          className="inline-flex items-center bg-transparent p-0 text-xs text-gray-600 hover:text-blue-400 hover:underline border-0 hover:outline-none focus:outline-none"
           onClick={() => setShowComments((prevState) => !prevState)}
         >
           {comments.length} Comments{" "}

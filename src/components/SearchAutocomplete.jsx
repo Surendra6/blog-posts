@@ -62,11 +62,11 @@ const SearchAutocomplete = ({ handleSearch, handleSelectSuggestion }) => {
               onClick={() => handleSuggestionClick(suggestion)}
             >
               <span className="truncate w-3/4">
-                {suggestion.searchType === "Post"
+                {suggestion.searchType === "post"
                   ? suggestion.title
                   : suggestion.name}
               </span>
-              <span className="w-1/4 text-right text-blue-400">
+              <span className="w-1/4 text-right text-gray-700 font-semibold capitalize">
                 | {suggestion.searchType ?? ""}
               </span>
             </li>

@@ -9,7 +9,6 @@ const PostCard = ({ postId, userId, title, body }) => {
   const [showComments, setShowComments] = useState(false);
 
   const comments = getCommentsByPostId(postId);
-  console.log({ comments });
   return (
     <section className="rounded-lg bg-white p-5 border border-gray-300">
       <UserInfo userId={userId} />

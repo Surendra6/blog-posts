@@ -45,7 +45,12 @@ const Home = () => {
         )}
       </button>
 
-      <FaAnglesDown size={20} className="animate-bounce text-blue-500" />
+      <button
+        className="animate-bounce bg-transparent p-0 text-gray-500 hover:text-gray-600 cursor-pointer border-0 hover:outline-none focus:outline-none"
+        onClick={handleLoadMore}
+      >
+        <FaAnglesDown size={20} className="text-blue-500" />
+      </button>
     </div>
   );
 };

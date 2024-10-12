@@ -1,24 +1,39 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import useFetchPosts from "../services/useFetchPosts";
 import useFetchComments from "../services/useFetchComments";
 
-const PostsContext = createContext([]);
+const PostsContext = createContext({
+  posts: [],
+  comments: [],
+  getPostById: () => {},
+  getCommentsByPostId: () => {},
+});
 
-export const PostsContextProvider = ({ children }) => {
+// Create a custom hook for easier access to the context
+const usePostContext = () => {
+  const context = useContext(PostsContext);
+  if (!context) {
+    throw new Error(
+      "usePostContext must be used within a PostsContextProvider"
+    );
+  }
+  return context;
+};
+
+const PostsContextProvider = ({ children }) => {
   const { data: posts } = useFetchPosts();
   const { data: comments } = useFetchComments();
 
   const getPostById = (id) => {
-    posts ? posts.filter((post) => post.id === Number(id))[0] : [];
+    return posts
+      ? posts.filter((post) => post.id === Number(id))[0]
+      : undefined;
   };
 
   const getCommentsByPostId = (id) => {
-    const temp = comments
-      ? comments.filter(({ postId }) => {
-          return postId === Number(id);
-        })
+    return comments
+      ? comments.filter(({ postId }) => postId === Number(id))
       : [];
-    return temp;
   };
 
   return (
@@ -30,4 +45,4 @@ export const PostsContextProvider = ({ children }) => {
   );
 };
 
-export default PostsContext;
+export { usePostContext, PostsContextProvider };

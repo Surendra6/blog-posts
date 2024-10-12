@@ -1,10 +1,10 @@
-import { useContext, useMemo, useState } from "react";
-import PostsContext from "../hooks/context/PostsContext";
+import { useMemo, useState } from "react";
+import { usePostContext } from "../hooks/context/PostsContext";
 import PostCard from "../components/PostCard";
 import { FaAnglesDown } from "react-icons/fa6";
 
 const Home = () => {
-  const { posts } = useContext(PostsContext);
+  const { posts } = usePostContext();
   const [maxPosts, setMaxPosts] = useState(5);
   const [isLoadMore, setIsLoadMore] = useState(false);
 

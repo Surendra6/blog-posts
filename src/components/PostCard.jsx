@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import UserInfo from "./UserInfo";
-import PostsContext from "../hooks/context/PostsContext";
+import { usePostContext } from "../hooks/context/PostsContext";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import Avatar from "../design-system/Avatar";
 
 const PostCard = ({ postId, userId, title, body }) => {
-  const { getCommentsByPostId } = useContext(PostsContext);
+  const { getCommentsByPostId } = usePostContext();
   const [showComments, setShowComments] = useState(false);
 
   const comments = getCommentsByPostId(postId);

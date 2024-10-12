@@ -1,14 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
-import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { LuListTodo } from "react-icons/lu";
 import { PiUsersFill } from "react-icons/pi";
 import { MdPhotoLibrary } from "react-icons/md";
 import SearchAutocomplete from "./SearchAutocomplete.jsx";
 import { useContext, useState } from "react";
 import UsersContext from "../hooks/context/UsersContext";
-import PostsContext from "../hooks/context/PostsContext";
+import { usePostContext } from "../hooks/context/PostsContext";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
 
 const NavLink = ({ label, icon, route, currentPath }) => {
   return (
@@ -28,7 +27,7 @@ const Header = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { users } = useContext(UsersContext);
-  const { posts } = useContext(PostsContext);
+  const { posts } = usePostContext();
   const [showSearchInput, setShowSearchInput] = useState(false);
 
   // Handle search logic passed as prop

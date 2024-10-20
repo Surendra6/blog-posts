@@ -11,20 +11,23 @@ import { MdOutlineInsights } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { usePostContext } from "../hooks/context/PostsContext";
 import { useAlbumsContext } from "../hooks/context/AlbumsContext";
+import { useTodosContext } from "../hooks/context/TodosContext";
 
 const UserDetails = () => {
   const { id } = useParams();
   const { users } = useUsersContext();
   const { posts } = usePostContext();
   const { albums, photos } = useAlbumsContext();
+  const { todos } = useTodosContext();
+  const userId = useMemo(() => Number(id), [id]);
 
-  const postCount = posts?.filter((post) => post.userId === Number(id)).length;
+  const postCount = posts?.filter((post) => post.userId === userId).length;
   const albumIds = useMemo(
     () =>
       albums
-        ?.filter((album) => album.userId === Number(id))
+        ?.filter((album) => album.userId === userId)
         ?.map((album) => album.id),
-    [albums, id]
+    [albums, userId]
   );
 
   const photosOfUser = useMemo(
@@ -32,9 +35,14 @@ const UserDetails = () => {
     [photos, albumIds]
   );
 
+  const todosByUser = useMemo(
+    () => todos?.filter((todo) => todo.userId === userId),
+    [todos, userId]
+  );
+
   const user = useMemo(() => {
-    return users.find((user) => (user.id = Number(id)));
-  }, [id, users]);
+    return users.find((user) => (user.id = userId));
+  }, [userId, users]);
 
   if (!user) return <h1>User Not found</h1>;
 
@@ -95,13 +103,16 @@ const UserDetails = () => {
       </h2>
       <section className="border-b py-6">
         <div className="text-sm font-semibold">{postCount} Posts</div>
-        <span className="text-sm font-semibold">
+        <div className="text-sm font-semibold">
           {albumIds.length} Albums (
           <span className="text-xs text-gray-600">
             {photosOfUser?.length} Photos
           </span>
           )
-        </span>
+        </div>
+        <div className="text-sm font-semibold">
+          {todosByUser.length} Pending Todos
+        </div>
       </section>
 
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">

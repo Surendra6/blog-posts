@@ -9,10 +9,28 @@ import { GoOrganization } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineInsights } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { usePostContext } from "../hooks/context/PostsContext";
+import { useAlbumsContext } from "../hooks/context/AlbumsContext";
 
 const UserDetails = () => {
   const { id } = useParams();
   const { users } = useUsersContext();
+  const { posts } = usePostContext();
+  const { albums, photos } = useAlbumsContext();
+
+  const postCount = posts?.filter((post) => post.userId === Number(id)).length;
+  const albumIds = useMemo(
+    () =>
+      albums
+        ?.filter((album) => album.userId === Number(id))
+        ?.map((album) => album.id),
+    [albums, id]
+  );
+
+  const photosOfUser = useMemo(
+    () => photos?.filter((photo) => albumIds?.includes(photo.albumId)),
+    [photos, albumIds]
+  );
 
   const user = useMemo(() => {
     return users.find((user) => (user.id = Number(id)));
@@ -21,7 +39,7 @@ const UserDetails = () => {
   if (!user) return <h1>User Not found</h1>;
 
   return (
-    <section className="rounded-lg bg-white text-black p-5 border border-gray-300">
+    <section className="rounded-lg bg-white text-black p-5 border border-gray-300 text-md">
       <h2 className="text-xl font-semibold flex flex-row gap-2 items-center">
         <CgProfile /> Profile
       </h2>
@@ -56,18 +74,35 @@ const UserDetails = () => {
         Company
       </h2>
       <section className="border-b py-6">
-        <div className="font-semibold">{user?.company.name}</div>
-        <div className="">
+        <div className="font-semibold text-gray-700 text-base">
+          {user?.company.name}
+        </div>
+        <div className="text-gray-600 text-sm">
           {user?.company.catchPhrase} | {user?.company.bs}
         </div>
-        <div className="">{user?.website}</div>
+        <a
+          className="text-xs hover:underline cursor-pointer"
+          href={user?.website}
+          target="_blank"
+        >
+          {user?.website}
+        </a>
       </section>
 
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">
         <MdOutlineInsights />
         Activity
       </h2>
-      <section className="border-b py-6"></section>
+      <section className="border-b py-6">
+        <div className="text-sm font-semibold">{postCount} Posts</div>
+        <span className="text-sm font-semibold">
+          {albumIds.length} Albums (
+          <span className="text-xs text-gray-600">
+            {photosOfUser?.length} Photos
+          </span>
+          )
+        </span>
+      </section>
 
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">
         <FaMapMarkedAlt />

@@ -17,8 +17,8 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <UsersContextProvider>
-        <PostsContextProvider>
+      <PostsContextProvider>
+        <UsersContextProvider>
           <Router>
             <div className="bg-gray-100 w-screen flex justify-center">
               <div className="w-full flex flex-col overflow-hidden items-center">
@@ -55,8 +55,8 @@ function App() {
               </div>
             </div>
           </Router>
-        </PostsContextProvider>
-      </UsersContextProvider>
+        </UsersContextProvider>
+      </PostsContextProvider>
     </QueryClientProvider>
   );
 }

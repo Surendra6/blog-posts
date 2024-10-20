@@ -15,7 +15,7 @@ const UserDetails = () => {
   const { users } = useUsersContext();
 
   const user = useMemo(() => {
-    return users.find((user) => (user.id = id));
+    return users.find((user) => (user.id = Number(id)));
   }, [id, users]);
 
   if (!user) return <h1>User Not found</h1>;

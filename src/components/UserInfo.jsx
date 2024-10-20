@@ -1,15 +1,12 @@
-import { useMemo } from "react";
 import Avatar from "../design-system/Avatar";
 import { Link } from "react-router-dom";
 
 import { useUsersContext } from "../hooks/context/UsersContext";
 
 const UserInfo = ({ userId }) => {
-  const { users } = useUsersContext();
+  const { getUserById } = useUsersContext();
 
-  const userDetails = useMemo(() => {
-    return users.find((user) => user.id === userId);
-  }, [users, userId]);
+  const userDetails = getUserById(userId);
 
   if (!userDetails)
     return (

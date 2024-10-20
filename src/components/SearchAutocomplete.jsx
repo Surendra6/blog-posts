@@ -72,12 +72,12 @@ const SearchAutocomplete = ({ handleSearch, handleSelectSuggestion }) => {
 
   return (
     <div className="relative w-full">
-      <div className="flex flex-row items-center bg-gray-200 rounded-md ">
+      <div className="flex flex-row items-center bg-gray-100 rounded-md ">
         <AiOutlineSearch className="w-12 text-gray-500 text-xl" />
         <input
           type="text"
-          className="py-1 w-full bg-transparent text-gray-700 focus:outline-none"
-          placeholder="Search for User or Post"
+          className="text-sm py-1 w-full bg-transparent text-gray-700 focus:outline-none"
+          placeholder="Search for User/Post"
           value={query}
           onChange={onSearchChange}
           onKeyDown={handleKeyDown} // Add keyboard events for input field

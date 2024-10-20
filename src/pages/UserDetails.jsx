@@ -1,6 +1,6 @@
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import UsersContext from "../hooks/context/UsersContext";
+import { useUsersContext } from "../hooks/context/UsersContext";
 import Avatar from "../design-system/Avatar";
 import { MdEmail } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
@@ -12,7 +12,8 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 
 const UserDetails = () => {
   const { id } = useParams();
-  const { users } = useContext(UsersContext);
+  const { users } = useUsersContext();
+
   const user = useMemo(() => {
     return users.find((user) => (user.id = id));
   }, [id, users]);
@@ -24,21 +25,22 @@ const UserDetails = () => {
       <h2 className="text-xl font-semibold flex flex-row gap-2 items-center">
         <CgProfile /> Profile
       </h2>
-      <section className="flex flex-row justify-between items-start border-b py-5">
-        <div>
+      <section className="flex flex-row gap-3 justify-between items-start border-b py-5">
+        <div className="flex flex-col items-center">
           <Avatar name={user?.name} styledClasses="size-24" />
-          <div className="mt-2">{user?.name}</div>
+          <div className="mt-2 text-center">{user?.name}</div>
         </div>
 
-        <div>
+        <div className="text-sm md:text-base">
           <div className="flex flex-row gap-3 items-center my-2">
-            <MdEmail size={20} /> <span>{user?.email}</span>
+            <MdEmail className="size-4 md:size-6" /> <span>{user?.email}</span>
           </div>
           <div className="flex flex-row gap-3 items-center my-2">
-            <MdLocalPhone size={20} /> <span>{user?.phone}</span>
+            <MdLocalPhone className="size-4 md:size-6" />{" "}
+            <span>{user?.phone}</span>
           </div>
           <div className="flex flex-row gap-3 items-start my-2">
-            <MdLocationOn size={20} />{" "}
+            <MdLocationOn className="size-5 md:size-6" />{" "}
             <span>
               {user?.address.suite}, {user?.address.street}
               <br />

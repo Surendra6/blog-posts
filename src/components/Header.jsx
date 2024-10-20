@@ -4,8 +4,8 @@ import { LuListTodo } from "react-icons/lu";
 import { PiUsersFill } from "react-icons/pi";
 import { MdPhotoLibrary } from "react-icons/md";
 import SearchAutocomplete from "./SearchAutocomplete.jsx";
-import { useContext, useState } from "react";
-import UsersContext from "../hooks/context/UsersContext";
+import { useState } from "react";
+import { useUsersContext } from "../hooks/context/UsersContext";
 import { usePostContext } from "../hooks/context/PostsContext";
 import { useNavigate } from "react-router-dom";
 
@@ -26,8 +26,9 @@ const NavLink = ({ label, icon, route, currentPath }) => {
 const Header = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { users } = useContext(UsersContext);
   const { posts } = usePostContext();
+  const { users } = useUsersContext();
+
   const [showSearchInput, setShowSearchInput] = useState(false);
 
   // Handle search logic passed as prop
@@ -62,7 +63,7 @@ const Header = () => {
 
   return (
     <header className="bg-white text-gray-400 shadow-md fixed top-0 left-0 w-full z-10">
-      <div className="max-w-3xl container mx-auto flex justify-between px-5 items-center md:flex-row">
+      <div className="max-w-3xl container mx-auto flex gap-3 justify-between px-5 items-center md:flex-row">
         <div className="relative w-full md:w-1/2">
           <SearchAutocomplete
             handleSearch={handleSearch}

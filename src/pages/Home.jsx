@@ -2,9 +2,10 @@ import { useMemo, useState } from "react";
 import { usePostContext } from "../hooks/context/PostsContext";
 import PostCard from "../components/PostCard";
 import { FaAnglesDown } from "react-icons/fa6";
+import Loader from "../design-system/Loader";
 
 const Home = () => {
-  const { posts } = usePostContext();
+  const { posts, isPostsLoading } = usePostContext();
   const [maxPosts, setMaxPosts] = useState(5);
   const [isLoadMore, setIsLoadMore] = useState(false);
 
@@ -20,6 +21,8 @@ const Home = () => {
     () => (posts && posts.length ? posts.slice(0, maxPosts) : []),
     [maxPosts, posts]
   );
+
+  if (isPostsLoading) return <Loader />;
 
   if (!loadedPosts.length) return <h1>No Posts found</h1>;
 

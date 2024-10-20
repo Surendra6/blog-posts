@@ -5,6 +5,8 @@ import useFetchComments from "../services/useFetchComments";
 const PostsContext = createContext({
   posts: [],
   comments: [],
+  isPostsLoading: false,
+  isCommentsLoading: false,
   getPostById: () => {},
   getCommentsByPostId: () => {},
 });
@@ -21,8 +23,8 @@ const usePostContext = () => {
 };
 
 const PostsContextProvider = ({ children }) => {
-  const { data: posts } = useFetchPosts();
-  const { data: comments } = useFetchComments();
+  const { data: posts, isFetching: isPostsLoading } = useFetchPosts();
+  const { data: comments, isFetching: isCommentsLoading } = useFetchComments();
 
   const getPostById = (id) => {
     return posts
@@ -38,7 +40,14 @@ const PostsContextProvider = ({ children }) => {
 
   return (
     <PostsContext.Provider
-      value={{ posts, comments, getPostById, getCommentsByPostId }}
+      value={{
+        posts,
+        isPostsLoading,
+        comments,
+        isCommentsLoading,
+        getPostById,
+        getCommentsByPostId,
+      }}
     >
       {children}
     </PostsContext.Provider>

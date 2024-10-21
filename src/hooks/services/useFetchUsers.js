@@ -6,7 +6,7 @@ export const useFetchUsers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const response = await useApiClient.get("/users");
-      return response.data;
+      return response.data["users"];
     },
   });
 };

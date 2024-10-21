@@ -6,7 +6,7 @@ export const useFetchTodos = () => {
     queryKey: ["todos"],
     queryFn: async () => {
       const response = await useApiClient.get("/todos");
-      return response.data;
+      return response.data["todos"];
     },
   });
 };

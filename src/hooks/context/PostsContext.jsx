@@ -38,6 +38,8 @@ const PostsContextProvider = ({ children }) => {
       : [];
   };
 
+  console.log({ posts });
+
   return (
     <PostsContext.Provider
       value={{

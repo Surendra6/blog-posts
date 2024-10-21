@@ -3,7 +3,7 @@ import useApiClient from "./useApiClient";
 // Fetch all posts
 export const fetchPosts = async () => {
   const response = await useApiClient.get("/posts"); // GET request to /posts
-  return response.data;
+  return response.data["posts"];
 };
 
 // Fetch a single post by ID

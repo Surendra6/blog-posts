@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Create an Axios instance
 const useApiClient = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com", // Base URL for the API
+  //baseURL: "https://jsonplaceholder.typicode.com", // Base URL for the API
+  baseURL: "https://dummyjson.com/", // Base URL for the API
   headers: {
     "Content-Type": "application/json",
   },

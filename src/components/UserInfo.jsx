@@ -33,7 +33,11 @@ const UserInfo = ({ userId }) => {
         to={`/blog-posts/users/${userId}`}
         className="text-black font-bold text-sm hover:underline"
       >
-        <Avatar name={userDetails.name} styledClasses="size-16" />
+        <Avatar
+          firstName={userDetails.firstName}
+          lastName={userDetails.firstName}
+          styledClasses="size-16"
+        />
       </Link>
       <div className="flex flex-col">
         <Link

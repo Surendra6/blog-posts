@@ -6,7 +6,7 @@ export const useFetchComments = (id) => {
     queryKey: ["posts", id],
     queryFn: async () => {
       const response = await useApiClient.get("/comments");
-      return response.data;
+      return response.data["comments"];
     },
   });
 };

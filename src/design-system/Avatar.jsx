@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-const Avatar = ({ name, src, styledClasses }) => {
+const Avatar = ({ firstName, lastName, src, styledClasses }) => {
   const [imageError, setImageError] = useState(false);
 
-  // Function to get the initials from the name
-  const getInitials = (name) => {
-    const nameParts = name.split(" ");
-    const initials = nameParts.map((part) => part[0]).join("");
-    return initials.toUpperCase();
-  };
+  const initials = useMemo(() => {
+    return firstName[0] + lastName[0];
+  }, [firstName, lastName]);
 
   return (
     <div
@@ -17,12 +14,12 @@ const Avatar = ({ name, src, styledClasses }) => {
       {src && !imageError ? (
         <img
           src={src}
-          alt={name}
+          alt={initials}
           className={`rounded-full w-full h-full object-cover`}
           onError={() => setImageError(true)}
         />
       ) : (
-        <span>{getInitials(name)}</span>
+        <span>{initials}</span>
       )}
     </div>
   );

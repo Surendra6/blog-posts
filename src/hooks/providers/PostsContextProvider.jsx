@@ -1,26 +1,6 @@
-import { createContext, useContext } from "react";
 import useFetchPosts from "../services/useFetchPosts";
 import useFetchComments from "../services/useFetchComments";
-
-const PostsContext = createContext({
-  posts: [],
-  comments: [],
-  isPostsLoading: false,
-  isCommentsLoading: false,
-  getPostById: () => {},
-  getCommentsByPostId: () => {},
-});
-
-// Create a custom hook for easier access to the context
-const usePostContext = () => {
-  const context = useContext(PostsContext);
-  if (!context) {
-    throw new Error(
-      "usePostContext must be used within a PostsContextProvider"
-    );
-  }
-  return context;
-};
+import { PostsContext } from "../context/usePostContext";
 
 const PostsContextProvider = ({ children }) => {
   const { data: posts, isFetching: isPostsLoading } = useFetchPosts();
@@ -38,8 +18,6 @@ const PostsContextProvider = ({ children }) => {
       : [];
   };
 
-  console.log({ posts });
-
   return (
     <PostsContext.Provider
       value={{
@@ -56,4 +34,4 @@ const PostsContextProvider = ({ children }) => {
   );
 };
 
-export { usePostContext, PostsContextProvider };
+export { PostsContextProvider };

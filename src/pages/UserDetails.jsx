@@ -9,31 +9,17 @@ import { GoOrganization } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineInsights } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import { usePostContext } from "../hooks/context/PostsContext";
-import { useAlbumsContext } from "../hooks/context/AlbumsContext";
 import { useTodosContext } from "../hooks/context/TodosContext";
+import usePostContext from "../hooks/context/usePostContext";
 
 const UserDetails = () => {
   const { id } = useParams();
   const { users } = useUsersContext();
   const { posts } = usePostContext();
-  const { albums, photos } = useAlbumsContext();
   const { todos } = useTodosContext();
   const userId = useMemo(() => Number(id), [id]);
 
   const postCount = posts?.filter((post) => post.userId === userId).length;
-  const albumIds = useMemo(
-    () =>
-      albums
-        ?.filter((album) => album.userId === userId)
-        ?.map((album) => album.id),
-    [albums, userId]
-  );
-
-  const photosOfUser = useMemo(
-    () => photos?.filter((photo) => albumIds?.includes(photo.albumId)),
-    [photos, albumIds]
-  );
 
   const todosByUser = useMemo(
     () => todos?.filter((todo) => todo.userId === userId),
@@ -48,13 +34,20 @@ const UserDetails = () => {
 
   return (
     <section className="rounded-lg bg-white text-black p-5 border border-gray-300 text-md">
+      {/* Profile Section */}
       <h2 className="text-xl font-semibold flex flex-row gap-2 items-center">
         <CgProfile /> Profile
       </h2>
       <section className="flex flex-row gap-3 justify-between items-start border-b py-5">
         <div className="flex flex-col items-center">
-          <Avatar name={user?.name} styledClasses="size-24" />
-          <div className="mt-2 text-center">{user?.name}</div>
+          <Avatar
+            firstName={user?.firstName}
+            lastName={user?.lastName}
+            styledClasses="size-24"
+          />
+          <div className="mt-2 text-center">
+            {user?.firstName} {user?.lastName}
+          </div>
         </div>
 
         <div className="text-sm md:text-base">
@@ -68,25 +61,32 @@ const UserDetails = () => {
           <div className="flex flex-row gap-3 items-start my-2">
             <MdLocationOn className="size-5 md:size-6" />{" "}
             <span>
-              {user?.address.suite}, {user?.address.street}
+              {user?.address.address}, {user?.address.city}
               <br />
-              {user?.address.city}, {user?.address.zipcode}
+              {user?.address.stateCode}, {user?.address.postalCode} ,{" "}
+              {user?.address.country}
             </span>
           </div>
           <div className="flex flex-row items-center"></div>
         </div>
       </section>
-
+      {/* Company Section */}
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">
         <GoOrganization />
         Company
       </h2>
       <section className="border-b py-6">
         <div className="font-semibold text-gray-700 text-base">
-          {user?.company.name}
+          {user?.company.name}, {user?.company.department} |{" "}
+          {user?.company.title}
         </div>
-        <div className="text-gray-600 text-sm">
-          {user?.company.catchPhrase} | {user?.company.bs}
+
+        <div className=" text-gray-600 text-sm">
+          {user?.company.address.address}, {user?.company.address.city},{" "}
+        </div>
+        <div className=" text-gray-600 text-sm">
+          {user?.company.address.stateCode} {user?.company.address.postalCode},{" "}
+          {user?.company.address.country}
         </div>
         <a
           className="text-xs hover:underline cursor-pointer"
@@ -97,32 +97,35 @@ const UserDetails = () => {
         </a>
       </section>
 
+      {/* Activity Section */}
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">
         <MdOutlineInsights />
         Activity
       </h2>
       <section className="border-b py-6">
         <div className="text-sm font-semibold">{postCount} Posts</div>
-        <div className="text-sm font-semibold">
+        {/* <div className="text-sm font-semibold">
           {albumIds.length} Albums (
           <span className="text-xs text-gray-600">
             {photosOfUser?.length} Photos
           </span>
           )
-        </div>
+        </div> */}
         <div className="text-sm font-semibold">
           {todosByUser.length} Pending Todos
         </div>
       </section>
 
+      {/* Location Section */}
       <h2 className="text-xl font-semibold mt-5 flex flex-row gap-2 items-center">
         <FaMapMarkedAlt />
         Location
       </h2>
       <section className="py-6">
-        Integrate Google Map here for coordinates {user?.address.geo.lat}
+        Integrate Google Map here for coordinates{" "}
+        {user?.address.coordinates.lat}
         {", "}
-        {user?.address.geo.lng}
+        {user?.address.coordinates.lng}
       </section>
     </section>
   );

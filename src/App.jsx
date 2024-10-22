@@ -4,14 +4,13 @@ import UserDetails from "./pages/UserDetails";
 import Home from "./pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UsersContextProvider } from "./hooks/context/UsersContext";
-import { PostsContextProvider } from "./hooks/context/PostsContext";
+import { PostsContextProvider } from "./hooks/providers/PostsContextProvider";
 import UsersList from "./pages/UserList";
 import Header from "./components/Header";
 import Post from "./pages/Post";
 import WorkInProgress from "./pages/WorkInProgress";
 import ErrorPage from "./pages/ErrorPage";
 import { FaGithub } from "react-icons/fa";
-import { AlbumsContextProvider } from "./hooks/context/AlbumsContext";
 import { TodosContextProvider } from "./hooks/context/TodosContext";
 
 const queryClient = new QueryClient();

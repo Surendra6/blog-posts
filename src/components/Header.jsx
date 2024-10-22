@@ -4,10 +4,9 @@ import { LuListTodo } from "react-icons/lu";
 import { PiUsersFill } from "react-icons/pi";
 import { MdPhotoLibrary } from "react-icons/md";
 import SearchAutocomplete from "./SearchAutocomplete.jsx";
-import { useState } from "react";
 import { useUsersContext } from "../hooks/context/UsersContext";
-import { usePostContext } from "../hooks/context/PostsContext";
 import { useNavigate } from "react-router-dom";
+import usePostContext from "../hooks/context/usePostContext.js";
 
 const NavLink = ({ label, icon, route, currentPath }) => {
   return (
@@ -29,7 +28,7 @@ const Header = () => {
   const { posts } = usePostContext();
   const { users } = useUsersContext();
 
-  const [showSearchInput, setShowSearchInput] = useState(false);
+  // const [showSearchInput, setShowSearchInput] = useState(false);
 
   // Handle search logic passed as prop
   const handleSearch = (searchValue, setFilteredSuggestions) => {
@@ -57,9 +56,9 @@ const Header = () => {
     navigate(`/blog-posts/${searchType}/${id}`);
   };
 
-  const handleOnSearchToggle = () => {
-    setShowSearchInput((prevState) => !prevState);
-  };
+  // const handleOnSearchToggle = () => {
+  //   setShowSearchInput((prevState) => !prevState);
+  // };
 
   return (
     <header className="bg-white text-gray-400 shadow-md fixed top-0 left-0 w-full z-10">

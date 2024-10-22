@@ -35,19 +35,19 @@ const UserInfo = ({ userId }) => {
       >
         <Avatar
           firstName={userDetails.firstName}
-          lastName={userDetails.firstName}
+          lastName={userDetails.lastName}
           styledClasses="size-16"
         />
       </Link>
       <div className="flex flex-col">
         <Link
           to={`/blog-posts/users/${userId}`}
-          className="text-black text-sm hover:underline"
+          className="text-black text-sm hover:underline capitalize"
         >
-          {userDetails.name}
+          {userDetails.firstName} {userDetails.lastName} | {userDetails.gender}
         </Link>
         <p className="text-xs text-gray-500">
-          {userDetails.company.name} | {userDetails.company.catchPhrase}
+          {userDetails.company.name} | {userDetails.company.title}
         </p>
         <a
           className="text-xs hover:underline"

@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { usePostContext } from "../hooks/context/PostsContext";
 import PostCard from "../components/PostCard";
 import { FaAnglesDown } from "react-icons/fa6";
 import Loader from "../design-system/Loader";
+import usePostContext from "../hooks/context/usePostContext";
 
 const Home = () => {
   const { posts, isPostsLoading } = usePostContext();

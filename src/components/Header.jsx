@@ -33,10 +33,15 @@ const Header = () => {
   const handleSearch = (searchValue, setFilteredSuggestions) => {
     if (searchValue.length > 2) {
       const filteredUsers = users
-        .filter((user) =>
-          user.name.toLowerCase().startsWith(searchValue.toLowerCase())
+        .filter(
+          (user) =>
+            user.firstName
+              .toLowerCase()
+              .startsWith(searchValue.toLowerCase()) ||
+            user.lastName.toLowerCase().startsWith(searchValue.toLowerCase())
         )
         .map((user) => ({ ...user, searchType: "users" }));
+
       const filteredPosts = posts
         .filter(
           (post) =>

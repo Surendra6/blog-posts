@@ -1,25 +1,25 @@
-This is a React application built with Vite and styled using Tailwind CSS. It leverages the JSONPlaceholder API to display a blog posts application where users can view blog posts, comments, users' activity, and geographical information.
+This is a React application built with Vite and styled using Tailwind CSS. It leverages the DummyJSON API to display a blog posts application where users can view blog posts, comments, users' activity, and geographical information.
 
 # Live Demo
+
 The application is hosted on GitHub Pages and can be accessed here:
 
 https://surendra6.github.io/blog-posts/
 
 # Features
 
-- **Blog Posts**: Fetch and display blog posts from the JSONPlaceholder API.
+- **Blog Posts**: Fetch and display blog posts from the DummyJSON API.
 - **Comments**: View comments associated with each blog post.
 - **Users List**: Fetch and display a list of users.
 - **User Information**: Display detailed information about each user, including their address, geo-location, and activity (posts, etc.).
 - **Geo Location Map**: Display the user's geo-location on a map.
 - **Search Functionality**:
-    - Search blog posts by title.
-    - Search users by name.
+  - Search blog posts by title.
+  - Search users by name.
 - **Git hub link**: Git hub fixed at the bottomm right corder Link provides the access to the source code.
 
 ## Upcoming Features
 
-- **ToDos**: Manage and display user ToDos.
 - **Albums**: Display and manage user albums.
 
 # Tech Stack
@@ -28,7 +28,7 @@ https://surendra6.github.io/blog-posts/
 - **Vite**: Fast build tool for modern web applications.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **React Icons**: For adding icons to the UI.
-- **JSONPlaceholder API**: Free fake REST API to simulate real-world data.
+- **DummyJSON API**: Free fake REST API to simulate real-world data.
 - **React Router**: For handling navigation.
 - **Axios**: For making HTTP requests to the API.
 
@@ -64,12 +64,11 @@ You can search for users by their name. The user search bar is located on the us
 
 # API Endpoints Used
 
-This app leverages the following endpoints from the JSONPlaceholder API:
+This app leverages the following endpoints from the DummyJSON API:
 
 - `/posts`: Fetch all blog posts.
 - `/users`: Fetch all users.
 - `/comments`: Fetch all comments.
-- `/todos`: (Upcoming Feature) Fetch a list of user ToDos.
 - `/albums`: (Upcoming Feature) Fetch a list of user albums.
 
 # Geo Location Map
@@ -78,5 +77,4 @@ For each user, the application will display their geo-location on a map, based o
 
 # Upcoming Features
 
-- **ToDos**: Manage and display users' ToDo tasks, allowing users to view tasks and mark them as completed.
 - **Albums**: Display albums created by users, with the ability to view individual photos.

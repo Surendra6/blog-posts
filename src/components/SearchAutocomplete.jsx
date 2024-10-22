@@ -24,7 +24,9 @@ const SearchAutocomplete = ({ handleSearch, handleSelectSuggestion }) => {
   // Handle click on suggestion
   const handleSuggestionClick = (suggestion) => {
     setQuery(
-      suggestion.searchType === "post" ? suggestion.title : suggestion.name
+      suggestion.searchType === "post"
+        ? suggestion.title
+        : suggestion.firstName + " " + suggestion.lastName
     );
     setFilteredSuggestions([]);
     setIsSuggestionsOpen(false);
@@ -122,7 +124,7 @@ const SearchAutocomplete = ({ handleSearch, handleSelectSuggestion }) => {
               <span className="truncate w-3/4">
                 {suggestion.searchType === "post"
                   ? suggestion.title
-                  : suggestion.name}
+                  : suggestion.firstName + " " + suggestion.lastName}
               </span>
               <span className="w-1/4 text-right text-black uppercase">
                 | {suggestion.searchType ?? ""}

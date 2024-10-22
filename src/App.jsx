@@ -28,10 +28,6 @@ function App() {
                   <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route
-                      path="/blog-posts/todos"
-                      element={<WorkInProgress />}
-                    />
-                    <Route
                       path="/blog-posts/albums"
                       element={<WorkInProgress />}
                     />

@@ -10,21 +10,14 @@ import { MdOutlineInsights } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import usePostContext from "../hooks/context/usePostContext";
 import useUsersContext from "../hooks/context/useUsersContext";
-import useTodosContext from "../hooks/context/useTodosContext";
 
 const UserDetails = () => {
   const { id } = useParams();
   const { users } = useUsersContext();
   const { posts } = usePostContext();
-  const { todos } = useTodosContext();
   const userId = useMemo(() => Number(id), [id]);
 
   const postCount = posts?.filter((post) => post.userId === userId).length;
-
-  const todosByUser = useMemo(
-    () => todos?.filter((todo) => todo.userId === userId),
-    [todos, userId]
-  );
 
   const user = useMemo(() => {
     return users.find((user) => (user.id = userId));
@@ -111,9 +104,6 @@ const UserDetails = () => {
           </span>
           )
         </div> */}
-        <div className="text-sm font-semibold">
-          {todosByUser.length} Pending Todos
-        </div>
       </section>
 
       {/* Location Section */}

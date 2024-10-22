@@ -1,5 +1,5 @@
-import { useUsersContext } from "../hooks/context/UsersContext";
 import UserInfo from "../components/UserInfo";
+import useUsersContext from "../hooks/context/useUsersContext";
 
 const UsersList = () => {
   const { users } = useUsersContext();

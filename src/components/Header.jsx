@@ -1,12 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { LuListTodo } from "react-icons/lu";
 import { PiUsersFill } from "react-icons/pi";
 import { MdPhotoLibrary } from "react-icons/md";
 import SearchAutocomplete from "./SearchAutocomplete.jsx";
-import { useUsersContext } from "../hooks/context/UsersContext";
 import { useNavigate } from "react-router-dom";
 import usePostContext from "../hooks/context/usePostContext.js";
+import useUsersContext from "../hooks/context/useUsersContext.js";
 
 const NavLink = ({ label, icon, route, currentPath }) => {
   return (
@@ -99,12 +98,6 @@ const Header = () => {
             label="Users"
             icon={<PiUsersFill className="size-6 md:size-5" />}
             route="/blog-posts/users"
-            currentPath={pathname}
-          />
-          <NavLink
-            label="Todos"
-            icon={<LuListTodo className="size-6 md:size-5" />}
-            route="/blog-posts/todos"
             currentPath={pathname}
           />
           <NavLink

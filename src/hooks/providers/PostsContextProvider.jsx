@@ -34,4 +34,4 @@ const PostsContextProvider = ({ children }) => {
   );
 };
 
-export { PostsContextProvider };
+export default PostsContextProvider;

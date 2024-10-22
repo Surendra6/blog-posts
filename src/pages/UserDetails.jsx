@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { useUsersContext } from "../hooks/context/UsersContext";
 import Avatar from "../design-system/Avatar";
 import { MdEmail } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
@@ -9,8 +8,9 @@ import { GoOrganization } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineInsights } from "react-icons/md";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import { useTodosContext } from "../hooks/context/TodosContext";
 import usePostContext from "../hooks/context/usePostContext";
+import useUsersContext from "../hooks/context/useUsersContext";
+import useTodosContext from "../hooks/context/useTodosContext";
 
 const UserDetails = () => {
   const { id } = useParams();

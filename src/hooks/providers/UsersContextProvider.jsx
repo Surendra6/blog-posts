@@ -1,18 +1,5 @@
-import { createContext, useContext } from "react";
+import { UsersContext } from "../context/useUsersContext";
 import { useFetchUsers } from "../services/useFetchUsers";
-
-const UsersContext = createContext({ users: [], getUserById: () => {} });
-
-// Create a custom hook for easier access to the context
-const useUsersContext = () => {
-  const context = useContext(UsersContext);
-  if (!context) {
-    throw new Error(
-      "useUsersContext must be used within a UsersContextProvider"
-    );
-  }
-  return context;
-};
 
 const UsersContextProvider = ({ children }) => {
   const { data: users } = useFetchUsers();
@@ -35,4 +22,4 @@ const UsersContextProvider = ({ children }) => {
   );
 };
 
-export { useUsersContext, UsersContextProvider };
+export default UsersContextProvider;

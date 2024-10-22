@@ -1,7 +1,6 @@
 import Avatar from "../design-system/Avatar";
 import { Link } from "react-router-dom";
-
-import { useUsersContext } from "../hooks/context/UsersContext";
+import useUsersContext from "../hooks/context/useUsersContext";
 
 const UserInfo = ({ userId }) => {
   const { getUserById } = useUsersContext();

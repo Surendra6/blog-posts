@@ -36,7 +36,7 @@ const UserDetails = () => {
           <Avatar
             firstName={user?.firstName}
             lastName={user?.lastName}
-            styledClasses="size-24"
+            styledClasses="size-24 text-3xl"
           />
           <div className="mt-2 text-center">
             {user?.firstName} {user?.lastName}

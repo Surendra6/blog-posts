@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import UserInfo from "./UserInfo";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import Avatar from "../design-system/Avatar";
 import usePostContext from "../hooks/context/usePostContext";
+import useUsersContext from "../hooks/context/useUsersContext";
+import { SlLike } from "react-icons/sl";
 
 const PostCard = ({ postId, userId, title, body }) => {
   const { getCommentsByPostId } = usePostContext();
+  const { users } = useUsersContext();
+
   const [showComments, setShowComments] = useState(false);
 
   const comments = getCommentsByPostId(postId);
+
+  const getUser = useCallback(
+    (id) => {
+      return users.find((user) => (user.id = id));
+    },
+    [users]
+  );
+
   return (
     <section className="rounded-lg bg-white p-5 border border-gray-300">
       <UserInfo userId={userId} />
@@ -28,22 +40,28 @@ const PostCard = ({ postId, userId, title, body }) => {
         </button>
 
         {showComments &&
-          comments.map((comment) => (
-            <div
-              className="animate-fade-down animate-duration-[2000ms] animate-delay-100 text-left"
-              key={comment.id}
-            >
-              <div className="flex flex-row gap-2 items-center">
-                <span className="">
-                  <Avatar name={comment.email} size={10} />
-                </span>
-                <p className="text-xs text-gray-500 font-bold">
-                  {comment.email}
+          comments.map(({ id, body, user, likes }) => (
+            <div className="flex gap-2 my-3" key={id}>
+              <Avatar
+                firstName={user.fullName.split(" ")[0]}
+                lastName={user.fullName.split(" ")[1]}
+                styledClasses={"size-10 text-sm"}
+              />
+              <div className="flex flex-col text-left">
+                <p className="text-xs text-gray-700 font-bold mt-1">
+                  {user.fullName}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {getUser(id).company.name} | {getUser(id).company.title}
+                </p>
+                <p className="text-xs text-black mt-3">{body}</p>
+                <p className="flex flex-row flex-wrap items-center gap-1 mt-2">
+                  <span className="rounded-full size-6 flex items-center justify-center bg-blue-300">
+                    <SlLike className="scale-x-[-1] inline text-black size-4" />
+                  </span>
+                  <span>{likes}</span>
                 </p>
               </div>
-              <p className="px-1 pt-2 pb-4 text-xs text-gray-500 text-wrap">
-                {comment.body}
-              </p>
             </div>
           ))}
       </div>

@@ -5,11 +5,6 @@ const UsersContextProvider = ({ children }) => {
   const { data: users } = useFetchUsers();
 
   const getUserById = (userId) => {
-    console.log(
-      users,
-      userId,
-      users?.find((user) => user.id === userId)
-    );
     return users?.find((user) => user.id === userId);
   };
 

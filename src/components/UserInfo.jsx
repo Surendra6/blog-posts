@@ -35,7 +35,7 @@ const UserInfo = ({ userId }) => {
         <Avatar
           firstName={userDetails.firstName}
           lastName={userDetails.lastName}
-          styledClasses="size-16"
+          styledClasses="size-16 text-lg"
         />
       </Link>
       <div className="flex flex-col">

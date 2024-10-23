@@ -9,7 +9,7 @@ const Avatar = ({ firstName, lastName, src, styledClasses }) => {
 
   return (
     <div
-      className={`flex items-center justify-center bg-blue-500 text-white rounded-full text-lg font-bold size-10 object-cover ${styledClasses}`}
+      className={`flex items-center justify-center text-white bg-cyan-600 rounded-full font-bold size-10 object-cover ${styledClasses}`}
     >
       {src && !imageError ? (
         <img

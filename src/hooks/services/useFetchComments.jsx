@@ -5,7 +5,7 @@ export const useFetchComments = (id) => {
   return useQuery({
     queryKey: ["posts", id],
     queryFn: async () => {
-      const response = await useApiClient.get("/comments");
+      const response = await useApiClient.get("/comments?limit=1000");
       return response.data["comments"];
     },
   });
